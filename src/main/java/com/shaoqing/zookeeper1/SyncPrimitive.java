@@ -97,7 +97,7 @@ public class SyncPrimitive implements Watcher {
     }
     //测试用的主类
     public static void main(String args[]) {
-    	args =new String[] {"qTest","localhost:4399","3","c"};
+    	args =new String[] {"qTest","localhost:2181","3","c"};
         if (args[0].equals("qTest"))
             queueTest(args);
         else

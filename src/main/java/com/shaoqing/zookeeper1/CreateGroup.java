@@ -1,6 +1,8 @@
 package com.shaoqing.zookeeper1;
 
 import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.CreateMode;
@@ -33,7 +35,7 @@ public class CreateGroup implements Watcher {
 	public void create(String groupName) throws KeeperException, InterruptedException{
 		String path = "/" + groupName;
 		//允许任何客户端对该znode进行读写,以及znode进行持久化
-		String createPath = zk.create(path, null, Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
+		String createPath = zk.create(path,new byte[]{'t','e','s','t'}, Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 		System.out.println("Created "+createPath);
 	}
 	//关闭zk
@@ -52,7 +54,7 @@ public class CreateGroup implements Watcher {
 	
 	//测试主类
 	public static void main(String args[]){
-		String host = "127.0.0.1:4399";
+		String host = "192.168.0.85:2181";
 		String groupName = "test";
 		CreateGroup createGroup = new CreateGroup();
 		try {

@@ -1,5 +1,6 @@
 package com.shaoqing.zookeeper1;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.zookeeper.KeeperException;
@@ -20,5 +21,12 @@ public class DeleteGroup extends ConnetctionWatcher {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static void main(String[] args) throws IOException, InterruptedException {
+		DeleteGroup deleteGroup = new DeleteGroup();
+		deleteGroup.connection("127.0.0.1:2181");
+		deleteGroup.delete("test");
+		deleteGroup.close();
 	}
 }
